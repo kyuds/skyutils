@@ -1,0 +1,9 @@
+resources:
+    cloud: kubernetes
+
+setup: |
+    echo "setup"
+
+run: |
+    echo "run"
+

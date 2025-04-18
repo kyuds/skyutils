@@ -1,0 +1,14 @@
+# Usage:
+# eksctl create cluster -f eks_test_cluster.yaml
+# eksctl delete cluster -f eks_test_cluster.yaml
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: skypilot-eks-cluster
+  region: ap-northeast-2
+
+managedNodeGroups:
+  - name: large-cpu-nodes # Creates 2 16-CPU nodes
+    instanceType: m5.4xlarge
+    desiredCapacity: 2

@@ -1,0 +1,12 @@
+service:
+  readiness_probe: /
+  replicas: 2
+
+resources:
+  ports: 8080
+  cpus: 2
+
+workdir: .
+
+run: python -m http.server 8080
+
