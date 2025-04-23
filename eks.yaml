@@ -11,4 +11,4 @@ metadata:
 managedNodeGroups:
   - name: large-cpu-nodes # Creates 2 16-CPU nodes
     instanceType: m5.4xlarge
-    desiredCapacity: 2
+    desiredCapacity: 1

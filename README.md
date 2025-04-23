@@ -10,5 +10,6 @@ eksctl utils write-config --cluster <cluster-name> --region <region>
 kind get clusters
 kind create cluster --name <cluster-name>
 kind delete cluster --name <cluster-name>
-```
 
+gcloud container clusters delete <name> --zone=us-central1-c
+```
