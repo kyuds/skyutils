@@ -1,6 +1,6 @@
 # Usage:
-# eksctl create cluster -f eks_test_cluster.yaml
-# eksctl delete cluster -f eks_test_cluster.yaml
+# eksctl create cluster -f eks.yaml
+# eksctl delete cluster -f eks.yaml
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
@@ -9,6 +9,6 @@ metadata:
   region: ap-northeast-2
 
 managedNodeGroups:
-  - name: large-cpu-nodes # Creates 2 16-CPU nodes
+  - name: large-cpu-nodes # Creates 1 16-CPU nodes
     instanceType: m5.4xlarge
     desiredCapacity: 1
