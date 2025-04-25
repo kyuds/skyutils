@@ -1,5 +1,5 @@
-# sky_yamls
-minimal yamls for skypilot
+# sky_utils
+utilities for skypilot development
 
 Some commands I need to remember:
 ```
