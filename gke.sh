@@ -1,6 +1,7 @@
 #!/bin/bash
 
-NAME="$1"
+NAME="${1:-skytest}"
+echo "Using cluster name: $NAME"
 
 gcloud container clusters create $NAME \
     --zone=us-central1-c \
