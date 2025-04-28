@@ -1,6 +1,6 @@
 resources:
     cloud: kubernetes
-    cpus: 16
+    cpus: 4+
 
 workdir: .
 
