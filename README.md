@@ -1,4 +1,4 @@
-# sky_utils
+# skyutils
 utilities for skypilot development
 
 Some commands I need to remember:
