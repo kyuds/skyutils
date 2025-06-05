@@ -5,6 +5,8 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+IMAGE=kyuds/skypilot:test1
+
 NAMESPACE=skypilot
 RELEASE_NAME=skypilot
 WEB_USERNAME=skypilot
@@ -23,7 +25,7 @@ case "$1" in
             --namespace $NAMESPACE \
             --create-namespace \
             --set ingress.authCredentials=$AUTH_STRING \
-            --set apiService.image=kyuds/skypilot:test \
+            --set apiService.image=$IMAGE \
             --set-file apiService.sshNodePools=/Users/kyuds/.sky/ssh_node_pools.yaml \
             --set apiService.sshKeySecret=$SECRET_NAME
         ;;
