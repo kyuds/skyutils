@@ -5,7 +5,7 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-IMAGE=kyuds/skypilot:test1
+IMAGE=kyuds/skypilot:test4
 
 NAMESPACE=skypilot
 RELEASE_NAME=skypilot
@@ -16,6 +16,10 @@ SECRET_NAME=apiserver-ssh-key
 
 case "$1" in
     setup)
+        kubectl create namespace $NAMESPACE
+        kubectl delete secret "$SECRET_NAME" \
+            --namespace "$NAMESPACE" \
+            --ignore-not-found
         kubectl create secret generic $SECRET_NAME \
             --namespace $NAMESPACE \
             --from-file=skytestkeypair.pem=/Users/kyuds/Desktop/skytestkeypair.pem
@@ -23,7 +27,6 @@ case "$1" in
         helm repo update
         helm upgrade --install $RELEASE_NAME skypilot/skypilot-nightly --devel \
             --namespace $NAMESPACE \
-            --create-namespace \
             --set ingress.authCredentials=$AUTH_STRING \
             --set apiService.image=$IMAGE \
             --set-file apiService.sshNodePools=/Users/kyuds/.sky/ssh_node_pools.yaml \
