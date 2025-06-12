@@ -1,0 +1,18 @@
+# sky launch custom_image.yaml
+# 5520
+
+resources:
+  image_id: docker:nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04
+  accelerators: A100
+  infra: gcp
+
+setup: |
+  conda activate base
+  python --version
+
+run: |
+  conda activate base
+  echo "python version"
+  python --version
+  echo "end of output"
+
