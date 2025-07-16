@@ -1,0 +1,13 @@
+# sky launch -c oom oom-kill.yaml
+
+resources:
+  cloud: kubernetes
+
+workdir: .
+
+setup: !
+  echo "Running Setup"
+
+run: |
+  python -c "data = [bytearray(1024*1024*100) for i in range(3000)]"
+
