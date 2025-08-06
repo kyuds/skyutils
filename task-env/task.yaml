@@ -1,0 +1,8 @@
+envs:
+  DATA_BUCKET_NAME: kyuds-bucket-v1
+  DATA_BUCKET_STORE_TYPE: s3
+
+file_mounts:
+  /data:
+    name: $DATA_BUCKET_NAME
+    store: $DATA_BUCKET_STORE_TYPE
