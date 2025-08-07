@@ -1,19 +1,38 @@
 import sky
+import sys
 
-def run():
-    resource = sky.Resources(infra='aws',)
-                            # accelerators='A100:8')
+# List of commands to run
+commands = [
+    'echo "Hello, SkyPilot!"',
+    'conda env list'
+]
 
-    task = sky.Task(setup='echo "Running setup."',
-                    run='echo "Hello, SkyPilot!"',
-                    workdir='.',
-                    resources=resource)
+# Define a resource object.
+#   infra: (Optional) if left out, automatically pick cheapest available.
+#   accelerators: 8x NVIDIA A100 GPU
+resource = sky.Resources(infra='aws', accelerators='A100:8')
 
-    request_id = sky.launch(task=task,
-                            cluster_name='mycluster')
+# Define a task object.
+#   setup: Typical use: pip install -r requirements.txt
+#   run: Typical use: make use of resources, such as running training.
+#   workdir: Working directory (optional) containing the project codebase.
+#      Its contents are synced to ~/sky_workdir/ on the cluster.
+#      Both `setup` and `run` is invoked under the workdir (i.e., can use its files).
+task = sky.Task(setup='echo "Running setup."',
+                run='\n'.join(commands),
+                workdir='.',
+                resources=resource)
 
-    sky.stream_and_get(request_id)
-    print('=== Task Complete! ===')
+# Launch the task.
+request_id = sky.launch(task=task, cluster_name='mycluster')
 
-if __name__ == '__main__':
-    run()
+# (Optional) stream the logs from the task to the console.
+job_id, handle = sky.stream_and_get(request_id)
+
+# (Optional) tail logs from the task to the console and get return code.
+returncode = sky.tail_logs(handle.get_cluster_name(),
+                            job_id,
+                            follow=True)
+
+# (Optional) exit based on task result.
+sys.exit(returncode)
