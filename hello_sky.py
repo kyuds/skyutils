@@ -10,7 +10,7 @@ commands = [
 # Define a resource object.
 #   infra: (Optional) if left out, automatically pick cheapest available.
 #   accelerators: 8x NVIDIA A100 GPU
-resource = sky.Resources(infra='aws', accelerators='A100:8')
+resource = sky.Resources(infra='aws')
 
 # Define a task object.
 #   setup: Typical use: pip install -r requirements.txt
@@ -19,7 +19,7 @@ resource = sky.Resources(infra='aws', accelerators='A100:8')
 #      Its contents are synced to ~/sky_workdir/ on the cluster.
 #      Both `setup` and `run` is invoked under the workdir (i.e., can use its files).
 task = sky.Task(setup='echo "Running setup."',
-                run='\n'.join(commands),
+                run=commands,
                 workdir='.',
                 resources=resource)
 
