@@ -1,0 +1,17 @@
+# kubectl apply -f debug-pod.yaml
+
+# debug-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug-pod
+spec:
+  containers:
+  - name: debug
+    image: python:3.9-slim
+    command: ["/bin/bash"]
+    args: ["-c", "sleep 3600"]  # Keep pod running
+    stdin: true
+    tty: true  # Important for interactive shell
+  restartPolicy: Never
+
