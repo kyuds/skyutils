@@ -1,0 +1,10 @@
+resources:
+  infra: kubernetes
+  cpus: 12+
+
+setup: |
+  echo "setup"
+
+run: |
+  echo "run"
+
