@@ -1,6 +1,7 @@
 # Usage:
 # eksctl create cluster -f eks.yaml
 # eksctl delete cluster -f eks.yaml
+
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 

@@ -1,4 +1,4 @@
-import benchmark_utils
+from benchmarks import benchmark_utils
 
 CMD = 'sky check'
 
