@@ -26,4 +26,4 @@ gcloud container node-pools create pool-16vcpu \
     --num-nodes 0 \
     --enable-autoscaling \
     --min-nodes 0 \
-    --max-nodes 3
+    --max-nodes 8
