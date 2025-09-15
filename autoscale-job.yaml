@@ -1,3 +1,5 @@
+num_nodes: 3
+
 resources:
   infra: kubernetes
   cpus: 12+
